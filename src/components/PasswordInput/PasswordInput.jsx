@@ -2,7 +2,7 @@ import styles from './style.module.css';
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-const PasswordInput = ({ value, onChange }) => {
+const PasswordInput = ({ value, onChange, labelDescription }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -11,7 +11,7 @@ const PasswordInput = ({ value, onChange }) => {
 
     return (
         <div className={styles.inputContainer}>
-            <label className={styles.label}>Пароль:</label>
+            <label className={styles.label}>{labelDescription}:</label>
             <div className={styles.passwordInputWrapper}>
                 <input type={showPassword ? 'text' : 'password'} className={styles.input} value={value} onChange={(e) => onChange(e)} />
                 <button type='button' className={styles.eyeIcon} onClick={togglePasswordVisibility}>

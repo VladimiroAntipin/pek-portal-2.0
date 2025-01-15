@@ -4,6 +4,7 @@
     width: 90%;
     gap: 25px;
     margin-bottom: 30px;
+    margin-top: 25px;
 }
 
 .button {
@@ -21,7 +22,7 @@
 
 .disabled {
     background-color: #1b1454;
-    opacity: 0.75;
+    opacity: 0.35;
     pointer-events: none;
     transition: 0.3s linear;
 }

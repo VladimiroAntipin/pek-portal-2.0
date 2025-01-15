@@ -3,7 +3,7 @@ import FormButtons from '../../components/FormButtons/FormButtons';
 import FormWrapper from '../../components/FormWrapper/FormWrapper';
 import styles from './styles.module.css';
 import PasswordInput from '../../components/PasswordInput/PasswordInput';
-import EmailInput from '../../components/EmailInput/EmailInput';
+import Input from '../../components/Input/input';
 import { useState, useEffect } from 'react';
 
 const LoginPage = () => {
@@ -12,6 +12,11 @@ const LoginPage = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
+
+    const labelDescription = {
+        email: 'Электронная почта',
+        password: 'Пароль'
+    }
 
     const buttonDescription = {
         blue: 'Войти',
@@ -69,16 +74,17 @@ const LoginPage = () => {
 
         setEmailError(emailValidationError);
         setPasswordError(passwordValidationError);
-    }
 
+        // TODO: send the request to the server to log in
+    }
 
     return (
         <div className={styles.loginPage}>
             <FormWrapper>
                 <Form onSubmit={handleSubmit}>
-                    <EmailInput value={email} onChange={handleEmailChange} onValidation={(error) => setEmailError(error)} />
+                    <Input value={email} onChange={handleEmailChange} labelDescription={labelDescription.email}/>
                     {emailError && <span className={styles.inputError}>{emailError}</span>}
-                    <PasswordInput value={password} onChange={handlePasswordChange} onValidation={(error) => setPasswordError(error)} />
+                    <PasswordInput value={password} onChange={handlePasswordChange} labelDescription={labelDescription.password} />
                     {passwordError && <span className={styles.inputError}>{passwordError}</span>}
                     <FormButtons buttonDescription={buttonDescription} isDisabled={isDisabled} />
                 </Form>
