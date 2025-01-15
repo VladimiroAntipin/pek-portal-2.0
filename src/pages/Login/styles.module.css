@@ -1,0 +1,17 @@
+.loginPage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.inputError {
+    color: #db002f;
+    font-size: 12px;
+    font-weight: bold;
+    width: 90%;
+    margin-top: -20px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}

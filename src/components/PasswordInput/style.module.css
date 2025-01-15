@@ -1,0 +1,55 @@
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    max-width: 340px;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+}
+
+.passwordInputWrapper {
+    width: 100%;
+    position: relative;
+    border-radius: 5px;
+    max-width: 340px;
+}
+
+.input {
+    font-size: 16px;
+    height: 30px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    border: 2px solid #1b1454;
+}
+
+.inputError {
+    color: #db002f;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.passwordInputWrapper input {
+    width: 91%;
+}
+
+.eyeIcon {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
