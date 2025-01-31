@@ -1,0 +1,34 @@
+.hamburger {
+    display: block;
+    position: fixed;
+    top: 26px;
+    right: 20px;
+}
+
+.hamburger.active .hamburgerline:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburgerline:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .hamburgerline:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.hamburgerline {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #ffffff;
+}
+
+@media screen and (min-width: 801px) {
+    .hamburger {
+        display: none;
+    }
+}

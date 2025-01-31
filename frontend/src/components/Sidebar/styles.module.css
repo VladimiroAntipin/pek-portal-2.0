@@ -1,0 +1,104 @@
+.sidebar {
+    display: flex;
+    position: fixed;
+    width: 240px;
+    height: 100vh;
+    top: 80px;
+    right: -300px;
+    flex-direction: column;
+    background-color: #1b1454;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-right: 30px;
+    transition: all 0.3s linear;
+}
+
+@media screen and (min-width: 801px) {
+    .sidebar {
+        display: flex;
+        position: fixed;
+        width: 240px;
+        height: 85vh;
+        top: 100px;
+        left: 20px;
+        flex-direction: column;
+        background-color: rgba(171, 183, 235, 0.3);
+        -webkit-box-shadow: 0px 0px 15px 4px rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 0px 0px 15px 4px rgba(34, 60, 80, 0.2);
+        box-shadow: 0px 0px 15px 4px rgba(34, 60, 80, 0.2);
+        border-radius: 2rem;
+        padding-left: 30px;
+        padding-top: 20px;
+        padding-right: 30px;
+        color: #1b1454;
+    }
+}
+
+@media screen and (min-width: 801px) {
+    .sidebarActive {
+        display: none;
+    }
+}
+
+.sidebarActive {
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 240px;
+    height: calc(100vh - 80px);
+    top: 80px;
+    flex-direction: column;
+    background-color: #1b1454;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-right: 25px;
+    transition: all 0.3s linear;
+}
+
+@media screen and (min-width: 801px) {
+    .sidebarActive {
+        display: none;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 801px) {
+    .wrapper {
+        height: 82vh;
+    }
+}
+
+.linksContainer {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    margin-top: 0;
+}
+
+@media screen and (min-width: 801px) {
+    .linksContainer {
+        height: 90%;
+    }
+}
+
+.nestedDropdownList {
+    padding: 0;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-left: 5px;
+}

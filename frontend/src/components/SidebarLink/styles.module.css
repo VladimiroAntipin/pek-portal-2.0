@@ -1,0 +1,161 @@
+.linkItem {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.2s linear;
+}
+
+.link {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-decoration: none;
+    border-radius: 2rem;
+    padding: 5px 5px 5px 10px;
+}
+
+@media screen and (min-width: 801px) {
+    .link {
+        gap: 0px;
+        padding: 8px 8px 8px 15px;
+    }
+}
+
+.linkActive {
+    background-color: rgb(104, 95, 176);
+}
+
+@media screen and (min-width: 801px) {
+    .linkActive {
+        background-color: rgba(104, 95, 176, 0.5);
+    }
+}
+
+.linkActive .arrow {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.linkActive .arrowRotate {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.link:hover {
+    cursor: pointer;
+    background-color: rgb(104, 95, 176);
+    transition: 0.2s linear;
+}
+
+@media screen and (min-width: 801px) {
+    .link:hover {
+        background-color: rgba(104, 95, 176, 0.5);
+    }
+}
+
+.linkWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.linkIcon {
+    width: 18px;
+}
+
+@media screen and (min-width: 801px) {
+    .linkIcon {
+        width: 25px;
+    }
+}
+
+.linkText {
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+}
+
+@media screen and (min-width: 801px) {
+    .linkText {
+        color: #1b1454;
+    }
+}
+
+.arrow {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.arrowRotate {
+    width: 12px;
+    height: 12px;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.dropdown {
+    width: 100%;
+    opacity: 0;
+    flex-direction: column;
+    gap: 10px;
+    transition: 0.3s ease-in-out;
+    height: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.dropdownVisible {
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.dropdownLink {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 2rem;
+    margin-left: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: transparent;
+    transition: 0.3s linear;
+}
+
+@media screen and (min-width: 801px) {
+    .dropdownLink {
+        color: #1b1454;
+        padding: 8px 10px 8px 20px;
+        height: 20px;
+    }
+}
+
+.dropdownLink:hover {
+    cursor: pointer;
+    background-color: rgba(104, 95, 176, 0.5);
+    transition: 0.3s linear;
+}
+
+@media screen and (min-width: 801px) {
+    .dropdownLink:hover {
+        background-color: rgba(104, 95, 176, 0.2);
+    }
+}
