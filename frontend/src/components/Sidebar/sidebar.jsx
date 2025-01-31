@@ -19,7 +19,7 @@ import Jira from '../../images/jira.png';
 import Feedback from '../../images/feedback.svg';
 import Apps from '../../images/apps.svg';
 import Logout from '../../images/logout.svg';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SidebarLink from '../SidebarLink/sidebarLink';
@@ -36,9 +36,11 @@ const Sidebar = ({ showSidebar }) => {
         apps: false,
         feedback: false,
     });
+    const [scrollToBottom, setScrollToBottom] = useState(false);
+    const linksContainerRef = useRef(null);
 
     const toggleDropdown = (link) => {
-        if (link === 'apps') {
+        if (link === 'apps' || link === 'feedback') {
             setDropdownStates((prevStates) => {
                 const newStates = { ...prevStates };
                 if (newStates[link]) {
@@ -51,6 +53,7 @@ const Sidebar = ({ showSidebar }) => {
                 }
                 return newStates;
             });
+            setScrollToBottom(true);
         } else if (['warehouse', 'confluence', 'world'].includes(link)) {
             setDropdownStates((prevStates) => {
                 const newStates = { ...prevStates };
@@ -64,6 +67,7 @@ const Sidebar = ({ showSidebar }) => {
                 }
                 return newStates;
             });
+            setScrollToBottom(true);
         } else {
             setDropdownStates((prevStates) => {
                 const newStates = { ...prevStates };
@@ -80,25 +84,35 @@ const Sidebar = ({ showSidebar }) => {
         };
     };
 
+    useEffect(() => {
+        if (scrollToBottom && linksContainerRef.current) {
+            linksContainerRef.current.scrollTo({
+                top: linksContainerRef.current.scrollHeight,
+                behavior: 'smooth',
+            });
+            setScrollToBottom(false);
+        }
+    }, [scrollToBottom, linksContainerRef]);
+
     const navigate = useNavigate();
 
     const handlelogout = () => {
         axios.get('/api/logout')
-        .then(res => {
-            console.log('Logout successfully ');
-            localStorage.removeItem('token');
-            navigate('/login');
-        })
-        .catch(err => {
-            console.error(err);
-        })
+            .then(res => {
+                console.log('Logout successfully ');
+                localStorage.removeItem('token');
+                navigate('/login');
+            })
+            .catch(err => {
+                console.error(err);
+            })
     }
 
     return (
         <div className={showSidebar ? styles.sidebarActive : styles.sidebar}>
             <div className={styles.wrapper}>
 
-                <ul className={styles.linksContainer}>
+                <ul className={styles.linksContainer} ref={linksContainerRef}>
                     <SidebarLink
                         icon={Ring}
                         text='ПЭК - это мы!'
