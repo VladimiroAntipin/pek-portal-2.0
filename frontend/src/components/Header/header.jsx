@@ -12,6 +12,7 @@ import Cart from '../../images/cart.svg';
 import MenuButton from '../MenuButton/menuButton';
 import Sidebar from '../Sidebar/sidebar';
 import { useState } from 'react';
+import SidebarOverlay from '../SidebarOverlay/sidebarOverlay';
 
 const Header = () => {
     const [showSidebar, setShowSidebar] = useState(false);
@@ -28,7 +29,7 @@ const Header = () => {
         <header className={styles.header}>
             <div className={styles.content} >
                 <nav className={styles.navbar}>
-                    <Link to="/home" onClick={scrollToTop}>
+                    <Link to="/feed" onClick={scrollToTop}>
                         <img className={styles.logo} src={Logo} alt="Logo" />
                     </Link>
 
@@ -66,11 +67,12 @@ const Header = () => {
                             </li>
                         </ul>
 
-                        <MenuButton toggleSidebar={toggleSidebar}/>
+                        <MenuButton toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
                     </div>
                 </nav>
             </div>
             <Sidebar showSidebar={showSidebar}/>
+            <SidebarOverlay showSidebar={showSidebar} onClose={toggleSidebar} />
         </header>
     );
 }

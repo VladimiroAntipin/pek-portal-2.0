@@ -2,12 +2,8 @@
 
 import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/header';
-import BottomNav from '../../components/BottomNav/bottomNav';
 
-const Home = () => {
+const Feed = () => {
     const [profile, setProfile] = useState('');
 
     useEffect(() => {
@@ -26,15 +22,10 @@ const Home = () => {
 
     
     return ( 
-        <>
-        <Header />
-        <div className={styles.home}>
-       {/*  {profile.name} {profile.surname} {profile.role === 1 ? 'admin' : 'normal'} */}
-        <button>Logout</button>
+        <div className={styles.feed}>
+            siuuuuuuum
         </div>
-        <BottomNav />
-        </>
      );
 }
  
-export default Home;
+export default Feed;

@@ -1,0 +1,22 @@
+.overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s linear;
+    opacity: 0;
+  }
+
+.overlayActive {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: calc(100% - 295px);
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s linear;
+  backdrop-filter: blur(10px);
+  opacity: 1;
+  z-index: 1;
+}

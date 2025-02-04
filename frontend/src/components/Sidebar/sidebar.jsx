@@ -254,15 +254,10 @@ const Sidebar = ({ showSidebar }) => {
                         onToggleDropdown={() => toggleDropdown('feedback')} />
                 </ul>
             </div>
-
-            <div className={styles.logout}>
                 <SidebarLink
                     icon={Logout}
                     text='Выход'
                     onClick={handlelogout} />
-            </div>
-
-
         </div>
     );
 }

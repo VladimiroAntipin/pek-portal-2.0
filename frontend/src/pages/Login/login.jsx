@@ -70,7 +70,7 @@ const LoginPage = () => {
             // console.log(data);
 
             if (data.success === true) {
-                navigate('/home');
+                navigate('/feed');
                 if (typeof window !== 'undefined') {
                     localStorage.setItem('token', JSON.stringify(data));
                 }

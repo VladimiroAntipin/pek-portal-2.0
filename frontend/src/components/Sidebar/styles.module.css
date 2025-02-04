@@ -10,7 +10,31 @@
     padding-left: 30px;
     padding-top: 20px;
     padding-right: 30px;
+    padding-bottom: 20px;
     transition: all 0.3s linear;
+}
+
+.sidebarActive {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    right: 0;
+    width: 240px;
+    height: calc(100vh - 110px);
+    top: 80px;
+    flex-direction: column;
+    background-color: #1b1454;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-right: 25px;
+    padding-bottom: 20px;
+    transition: all 0.3s linear;
+}
+
+@media screen and (min-width: 801px) {
+    .sidebarActive {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 801px) {
@@ -31,34 +55,6 @@
         padding-top: 20px;
         padding-right: 30px;
         color: #1b1454;
-    }
-}
-
-@media screen and (min-width: 801px) {
-    .sidebarActive {
-        display: none;
-    }
-}
-
-.sidebarActive {
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    width: 240px;
-    height: calc(100vh - 80px);
-    top: 80px;
-    flex-direction: column;
-    background-color: #1b1454;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-right: 25px;
-    transition: all 0.3s linear;
-}
-
-@media screen and (min-width: 801px) {
-    .sidebarActive {
-        display: none;
     }
 }
 
@@ -93,12 +89,4 @@
 
 .nestedDropdownList {
     padding: 0;
-}
-
-.logout {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 30px;
-    margin-left: 5px;
 }
