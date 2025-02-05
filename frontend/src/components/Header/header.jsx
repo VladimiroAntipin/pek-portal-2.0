@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './styles.module.css';
 import { Link } from 'react-router-dom';
 import Logo from '../../images/pek_logo_header.svg';
@@ -10,19 +8,10 @@ import Tv from '../../images/tv.svg';
 import User from '../../images/user.svg';
 import Cart from '../../images/cart.svg';
 import MenuButton from '../MenuButton/menuButton';
-import Sidebar from '../Sidebar/sidebar';
-import { useState } from 'react';
-import SidebarOverlay from '../SidebarOverlay/sidebarOverlay';
 
-const Header = () => {
-    const [showSidebar, setShowSidebar] = useState(false);
-
+const Header = ({toggleSidebar, showSidebar}) => {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    };
-
-    const toggleSidebar = () => {
-        setShowSidebar(state => !state);
     };
 
     return (
@@ -71,10 +60,8 @@ const Header = () => {
                     </div>
                 </nav>
             </div>
-            <Sidebar showSidebar={showSidebar}/>
-            <SidebarOverlay showSidebar={showSidebar} onClose={toggleSidebar} />
         </header>
     );
-}
+};
 
 export default Header;

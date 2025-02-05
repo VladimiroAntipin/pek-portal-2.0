@@ -1,0 +1,144 @@
+.modal {
+    position: absolute;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    min-width: 380px;
+    height: 30%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255, 0.8);
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+    z-index: 1000;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 60px 20px 60px;
+    gap: 60px;
+    opacity: 0;
+    transition: all 0.2s linear;
+}
+
+.modalActive {
+    position: absolute;
+    visibility: visible;
+    top: 50%;
+    left: 50%;
+    min-width: 380px;
+    height: 30%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255, 0.8);
+    -webkit-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+    z-index: 1000;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 60px 20px 60px;
+    gap: 60px;
+    opacity: 1;
+    transition: all 0.2s linear;
+}
+
+@media screen and (max-width: 801px) {
+    .modal {
+        position: absolute;
+        visibility: hidden;
+        top: 50%;
+        left: 50%;
+        width: 85%;
+        height: 30%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(255, 255, 255, 0.8);
+        -webkit-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+        box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+        z-index: 1000;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 60px;
+        opacity: 0;
+        transition: all 0.2s linear;
+    }
+}
+
+@media screen and (max-width: 801px) {
+    .modalActive {
+        position: absolute;
+        visibility: visible;
+        top: 50%;
+        left: 50%;
+        width: 85%;
+        height: 30%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(255, 255, 255, 0.8);
+        -webkit-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+        -moz-box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+        box-shadow: 0px 0px 20px 5px rgba(34, 60, 80, 0.2);
+        z-index: 1000;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        gap: 60px;
+        opacity: 1;
+        transition: all 0.2s linear;
+        transition-delay: 0.3s;
+    }
+}
+
+.modalText {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+
+.modalButtonsContainer {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    background-color: #1b1454;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    height: 50px;
+    width: 40%;
+    font-weight: bold;
+    transition: 0.3s linear;
+}
+
+.button:nth-child(2) {
+    background-color: #db002f;
+}
+
+.button:hover {
+    transition: 0.3s linear;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(27, 20, 84, 1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(27, 20, 84, 1);
+    box-shadow: 0px 0px 10px 0px rgba(27, 20, 84, 1);
+}
+
+.button:nth-child(2):hover {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(219, 0, 47, 1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(219, 0, 47, 1);
+    box-shadow: 0px 0px 10px 0px rgba(219, 0, 47, 1);
+}

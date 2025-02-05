@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './styles.module.css';
 import Ring from '../../images/ring.png';
 import Pecocracy from '../../images/pecocracy.png';
@@ -19,94 +17,22 @@ import Jira from '../../images/jira.png';
 import Feedback from '../../images/feedback.svg';
 import Apps from '../../images/apps.svg';
 import Logout from '../../images/logout.svg';
-import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import SidebarLink from '../SidebarLink/sidebarLink';
 
-const Sidebar = ({ showSidebar }) => {
-    const [dropdownStates, setDropdownStates] = useState({
-        ring: false,
-        services: false,
-        KARTA: false,
-        project: false,
-        warehouse: false,
-        confluence: false,
-        world: false,
-        apps: false,
-        feedback: false,
-    });
-    const [scrollToBottom, setScrollToBottom] = useState(false);
-    const linksContainerRef = useRef(null);
+const Sidebar = ({
+    showSidebar,
+    onToggleDropdown,
+    onLogoutClick,
+    dropdownStates,
+    linksContainerRef }) => {
 
     const toggleDropdown = (link) => {
-        if (link === 'apps' || link === 'feedback') {
-            setDropdownStates((prevStates) => {
-                const newStates = { ...prevStates };
-                if (newStates[link]) {
-                    newStates[link] = false;
-                } else {
-                    Object.keys(newStates).forEach((key) => {
-                        newStates[key] = false;
-                    });
-                    newStates[link] = true;
-                }
-                return newStates;
-            });
-            setScrollToBottom(true);
-        } else if (['warehouse', 'confluence', 'world'].includes(link)) {
-            setDropdownStates((prevStates) => {
-                const newStates = { ...prevStates };
-                if (newStates[link]) {
-                    newStates[link] = false;
-                } else {
-                    ['warehouse', 'confluence', 'world'].forEach((key) => {
-                        newStates[key] = false;
-                    });
-                    newStates[link] = true;
-                }
-                return newStates;
-            });
-            setScrollToBottom(true);
-        } else {
-            setDropdownStates((prevStates) => {
-                const newStates = { ...prevStates };
-                if (newStates[link]) {
-                    newStates[link] = false;
-                } else {
-                    Object.keys(newStates).forEach((key) => {
-                        newStates[key] = false;
-                    });
-                    newStates[link] = true;
-                }
-                return newStates;
-            });
-        };
+        onToggleDropdown(link);
     };
 
-    useEffect(() => {
-        if (scrollToBottom && linksContainerRef.current) {
-            linksContainerRef.current.scrollTo({
-                top: linksContainerRef.current.scrollHeight,
-                behavior: 'smooth',
-            });
-            setScrollToBottom(false);
-        }
-    }, [scrollToBottom, linksContainerRef]);
-
-    const navigate = useNavigate();
-
-    const handlelogout = () => {
-        axios.get('/api/logout')
-            .then(res => {
-                console.log('Logout successfully ');
-                localStorage.removeItem('token');
-                navigate('/login');
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    }
+    const handleLogoutClick = () => {
+        onLogoutClick();
+    };
 
     return (
         <div className={showSidebar ? styles.sidebarActive : styles.sidebar}>
@@ -254,10 +180,10 @@ const Sidebar = ({ showSidebar }) => {
                         onToggleDropdown={() => toggleDropdown('feedback')} />
                 </ul>
             </div>
-                <SidebarLink
-                    icon={Logout}
-                    text='Выход'
-                    onClick={handlelogout} />
+            <SidebarLink
+                icon={Logout}
+                text='Выход'
+                onClick={handleLogoutClick} />
         </div>
     );
 }
