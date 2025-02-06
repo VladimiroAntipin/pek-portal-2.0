@@ -63,7 +63,8 @@ const generateToken = async (user, statusCode, res) => {
         .cookie('token', token, options)
         .json({
             success: true,
-            token
+            token,
+            expires: expires
         })
 };
 
