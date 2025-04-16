@@ -14,7 +14,7 @@ const FormButtons = ({ buttonDescription, isDisabled }) => {
     }
     return (
         <div className={styles.buttonsContainer}>
-            <button type='submit' className={`${styles.button} ${isDisabled ? styles.disabled : ''}`}>{buttonDescription.blue}</button>
+            <button type='submit' className={`${styles.button} ${isDisabled ? styles.disabled : ''}`} >{buttonDescription.blue}</button>
             <button type='button' className={styles.button} onClick={handleButtonClick}>{buttonDescription.red}</button>
         </div>);
 }

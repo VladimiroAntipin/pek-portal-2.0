@@ -7,9 +7,10 @@ import styles from './styles.module.css';
 import PasswordInput from '../../components/PasswordInput/PasswordInput';
 import Input from '../../components/Input/input';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword } from '../../utils/inputsValidation';
+import { useAuth } from '../../context/authContext';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -17,6 +18,7 @@ const LoginPage = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     const labelDescription = {
@@ -62,19 +64,9 @@ const LoginPage = () => {
         setPasswordError(passwordValidationError);
 
         try {
-            const { data } = await axios.post('/api/login', {
-                email,
-                password
-            });
+            await login(email, password);
+            navigate('/feed');
 
-            // console.log(data);
-
-            if (data.success === true) {
-                navigate('/feed');
-                if (typeof window !== 'undefined') {
-                    localStorage.setItem('token', JSON.stringify(data));
-                }
-            }
         } catch (error) {
             if (error.response && error.response.status === 404) {
                 setEmailError('Неправильный логин или пароль');

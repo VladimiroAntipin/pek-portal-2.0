@@ -6,6 +6,7 @@ import Feed from './pages/Feed/feed';
 import AuthLayout from './components/AuthLayout/authLayout';
 
 function App() {
+  
   return (
     <div className="App">
       <Routes>
@@ -13,7 +14,6 @@ function App() {
         <Route path='/register' element={<RegisterPage />} />
         <Route element={<AuthLayout />}>
           <Route path="/feed" element={<Feed />} />
-          
         </Route>
       </Routes>
     </div>

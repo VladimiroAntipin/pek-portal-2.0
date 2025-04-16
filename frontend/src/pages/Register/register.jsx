@@ -7,9 +7,9 @@ import Input from '../../components/Input/input';
 import PasswordInput from '../../components/PasswordInput/PasswordInput';
 import FormButtons from '../../components/FormButtons/FormButtons';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword, validatePasswordMatch, validateName, validateSurname } from '../../utils/inputsValidation';
+import { useAuth } from '../../context/authContext';
 
 const RegisterPage = () => {
     const [surname, setSurname] = useState('');
@@ -24,6 +24,7 @@ const RegisterPage = () => {
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
+    const { register } = useAuth();
 
     const navigate = useNavigate();
 
@@ -102,18 +103,8 @@ const RegisterPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.post('/api/register', {
-                name,
-                surname,
-                patronimic,
-                email,
-                password,
-            });
-            console.log(data);
-
-            if (data.success === true) {
-                navigate('/login')
-            }
+            await register(surname, name, email, password);
+            navigate('/login');
         } catch (error) {
             if (error.response && error.response.status === 400) {
                 setEmailError('Пользователь с этой электронной почтой уже существует');

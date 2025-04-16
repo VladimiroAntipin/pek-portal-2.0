@@ -1,31 +1,45 @@
-'use client'
+'use client';
 
+import { useAuth } from '../../context/authContext';
+import userService from '../../api/users';
+import { useState, useEffect } from 'react';
 import styles from './styles.module.css';
-import { useEffect, useState } from 'react';
 
 const Feed = () => {
-    const [profile, setProfile] = useState('');
+    const { user } = useAuth();
+    const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        fetch('/api/myprofile')
-        .then(res => {
-            return res.json()
-        })
-        .then(result => {
-            // console.log(result)
-            setProfile(result.user);
-        })
-        .catch(err => {
+        const fetchUserProfile = async () => {
+          try {
+            const response = await userService.getCurrentUserProfile(user.accessToken);
+            setUserData(response.data);
+          } catch (err) {
+            setError('Failed to fetch user profile');
             console.error(err);
-        })
-    }, []);
-
+          } finally {
+            setLoading(false);
+          }
+        };
     
-    return ( 
+        if (user) {
+          fetchUserProfile();
+        }
+      }, [user]);
+    
+      if (loading) return <div>Загрузка...</div>;
+      if (error) return <div>{error}</div>;
+
+    return (
         <div className={styles.feed}>
-            siuuuuuuum
+            <div>
+                Welcome,{userData.surname}!
+            </div>
+
         </div>
-     );
+    );
 }
- 
+
 export default Feed;
