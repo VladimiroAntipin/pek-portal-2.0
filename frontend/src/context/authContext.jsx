@@ -37,11 +37,11 @@ export const AuthProvider = ({ children }) => {
           } catch (err) {
             if (err.response?.status === 401 && storedUser.refreshToken) {
               try {
-                const { accessToken, refreshToken: newRefreshToken } = 
+                const { accessToken, refreshToken: newRefreshToken } =
                   await authService.refreshToken(storedUser.refreshToken);
-                
-                const updatedUser = { 
-                  ...storedUser, 
+
+                const updatedUser = {
+                  ...storedUser,
                   accessToken,
                   refreshToken: newRefreshToken || storedUser.refreshToken
                 };

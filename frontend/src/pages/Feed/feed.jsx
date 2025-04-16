@@ -4,6 +4,7 @@ import { useAuth } from '../../context/authContext';
 import userService from '../../api/users';
 import { useState, useEffect } from 'react';
 import styles from './styles.module.css';
+import Loader from '../../components/Loader/loader';
 
 const Feed = () => {
     const { user } = useAuth();
@@ -29,7 +30,7 @@ const Feed = () => {
         }
       }, [user]);
     
-      if (loading) return <div>Загрузка...</div>;
+      if (loading) return <Loader />;
       if (error) return <div>{error}</div>;
 
     return (
