@@ -68,6 +68,7 @@ const Sidebar = ({
                         text='Сервисы сотрудника'
                         hasDropdown={true}
                         dropdownLinks={[
+                            { to: '#', text: 'ДМС' },
                             { to: '#', text: 'Электронные услуги' },
                             { to: '#', text: 'Юридические услуги (Jeffit)' },
                             { to: '#', text: 'HR-Link' },

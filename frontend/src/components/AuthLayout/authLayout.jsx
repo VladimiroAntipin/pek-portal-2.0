@@ -48,7 +48,6 @@ const AuthLayout = () => {
       return navigate("/login");
     }
   }, [isAuthenticated, navigate])
-  
 
   return (
     <div className={styles.layout}>

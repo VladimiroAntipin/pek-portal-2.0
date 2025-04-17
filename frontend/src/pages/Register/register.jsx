@@ -24,7 +24,7 @@ const RegisterPage = () => {
     const [passwordError, setPasswordError] = useState('');
     const [confirmPasswordError, setConfirmPasswordError] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
-    const { register } = useAuth();
+    const { register, isAuthenticated } = useAuth();
 
     const navigate = useNavigate();
 
@@ -111,6 +111,12 @@ const RegisterPage = () => {
             }
         }
     }
+
+    useEffect(() => {
+        if (isAuthenticated) {
+          return navigate("/feed");
+        }
+      }, [isAuthenticated, navigate])
 
     return (
         <div className={styles.registerPage}>

@@ -18,7 +18,7 @@ const LoginPage = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [isDisabled, setIsDisabled] = useState(true);
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     const labelDescription = {
@@ -74,6 +74,12 @@ const LoginPage = () => {
             }
         }
     };
+
+    useEffect(() => {
+        if (isAuthenticated) {
+          return navigate("/feed");
+        }
+      }, [isAuthenticated, navigate])
 
     return (
         <div className={styles.loginPage}>
