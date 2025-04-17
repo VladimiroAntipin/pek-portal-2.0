@@ -91,6 +91,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const register = async (email, password, name, surname) => {
+    try {
+      const userData = await authService.register(email, password, name, surname);
+      setUser(userData);
+      setIsAuthenticated(false);
+      return userData;
+    } catch (error) {
+      console.error("Registration failed:", error);
+      throw error;
+    }
+  };
+
   const logout = async () => {
     try {
       if (user?.refreshToken) {
@@ -111,6 +123,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         isLoading,
         login,
+        register,
         logout
       }}
     >

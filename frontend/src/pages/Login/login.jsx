@@ -68,7 +68,7 @@ const LoginPage = () => {
             navigate('/feed');
 
         } catch (error) {
-            if (error.response && error.response.status === 404) {
+            if (error.response && error.response.status === 401) {
                 setEmailError('Неправильный логин или пароль');
                 setPasswordError('Неправильный логин или пароль');
             }
